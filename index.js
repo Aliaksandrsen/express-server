@@ -9,7 +9,7 @@ app.get('/', (req, res, next) => {
 });
 
 app.get('/products', (req, res, next) => {
-    res.send(products);
+    res.json({products});
 });
 
 app.listen(5000, () => {
