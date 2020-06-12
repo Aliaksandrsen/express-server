@@ -9,7 +9,8 @@ app.get('/', (req, res, next) => {
 });
 
 app.get('/products', (req, res, next) => {
-    res.json({products});
+    console.log('Page', req.query.page);
+    res.send({products});
 });
 
 app.listen(5000, () => {
