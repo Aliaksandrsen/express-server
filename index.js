@@ -1,5 +1,6 @@
 const express = require('express');
 
+const booksRouter = express.Router();
 const app = express();
 
 const products = ['Apple', 'Pen', 'Computer'];
@@ -21,6 +22,17 @@ app.get('/products/:id', (req, res, next) => {
     }
 
 });
+
+booksRouter.get('/', (req, res) => {
+    res.send('Books');
+});
+
+booksRouter.get('/about', (req, res) => {
+    res.send('About books');
+});
+
+app.use('/books', booksRouter);
+
 
 app.listen(5000, () => {
     console.log('it is started', new Date());
