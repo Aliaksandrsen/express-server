@@ -20,7 +20,11 @@ app.get('/products/:id', (req, res, next) => {
     } else {
         res.status(404).send('Product not found');
     }
+});
 
+app.get('/blog', (req, res, next) => {
+    // res.redirect('/'); по умолчанию ставит 302 статус
+    res.redirect(301, '/');
 });
 
 booksRouter.get('/', (req, res) => {
