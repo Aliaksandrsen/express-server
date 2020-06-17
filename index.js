@@ -22,6 +22,12 @@ app.get('/products/:id', (req, res, next) => {
     }
 });
 
+app.get('/downloadBooks', (req, res, next) => {
+    res.download('./public/books.html', 'anothername', (err) => {// 2 аргумент для изм имени
+        console.log('file was sent');// 3 ф-я отраб после успешного отправления на клиент
+    });
+});
+
 app.get('/blog', (req, res, next) => {
     // res.redirect('/'); по умолчанию ставит 302 статус
     res.redirect(301, '/');
