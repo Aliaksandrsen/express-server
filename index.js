@@ -5,6 +5,9 @@ const app = express();
 
 const products = ['Apple', 'Pen', 'Computer'];
 
+// app.use(express.static('public')); // применять до вызова всех маршрутов
+app.use('/static', express.static(__dirname + '/public')); // для отдачи файлов по нужному адресу
+
 app.get('/', (req, res, next) => {
     res.send('It is working');
 });
