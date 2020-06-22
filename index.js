@@ -5,6 +5,14 @@ const app = express();
 
 const products = ['Apple', 'Pen', 'Computer'];
 
+app.use((req, res, next) => {
+    console.log('Data', new Date());
+    console.log('Method', req.method);
+    console.log('URL', req.originalUrl);
+    console.log('IP', req.ip);
+    next();
+});
+
 // app.use(express.static('public')); // применять до вызова всех маршрутов
 app.use('/static', express.static(__dirname + '/public')); // для отдачи файлов по нужному адресу
 
@@ -13,7 +21,7 @@ app.get('/', (req, res, next) => {
 });
 
 app.get('/products', (req, res, next) => {
-    console.log('Page', req.query.page);
+    console.log('Page query is:', req.query.page);
     res.send({ products });
 });
 
