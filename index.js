@@ -54,6 +54,11 @@ booksRouter.get('/about', (req, res) => {
 
 app.use('/books', booksRouter);
 
+app.use((err, req, res, next) => {
+    console.log(err.stack);
+    res.status(500).send(err.stack);
+});
+
 
 app.listen(5000, () => {
     console.log('it is started', new Date());
