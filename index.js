@@ -5,6 +5,9 @@ const app = express();
 
 const products = ['Apple', 'Pen', 'Computer'];
 
+app.set('view engine', 'pug');
+app.set('views', './views');
+
 app.use((req, res, next) => {
     console.log('Data', new Date());
     console.log('Method', req.method);
@@ -53,6 +56,14 @@ booksRouter.get('/about', (req, res) => {
 });
 
 app.use('/books', booksRouter);
+
+app.get('/main', (req, res, next) => {
+    res.render('main', {
+        title: 'Products',
+        message: 'Products list',
+        products,
+    })
+})
 
 app.use((err, req, res, next) => {
     console.log(err.stack);
