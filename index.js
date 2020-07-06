@@ -6,7 +6,8 @@ const app = express();
 const products = ['Apple', 'Pen', 'Computer'];
 
 // app.set('view engine', 'pug');
-app.set('view engine', 'ejs');
+// app.set('view engine', 'ejs');
+app.set('view engine', 'hbs');
 
 app.set('views', './views');
 
@@ -66,7 +67,7 @@ app.get('/pug', (req, res, next) => {
         message: 'Products list',
         products,
     })
-})
+});
 
 // ejs
 app.get('/ejs', (req, res, next) => {
@@ -75,7 +76,16 @@ app.get('/ejs', (req, res, next) => {
         message: 'Products list',
         products,
     })
-})
+});
+
+// hbs
+app.get('/hbs', (req, res, next) => {
+    res.render('main', {
+        title: 'Products',
+        message: 'Products list',
+        products,
+    })
+});
 
 app.use((err, req, res, next) => {
     console.log(err.stack);
